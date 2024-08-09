@@ -1,8 +1,9 @@
-import type { ColumnTypes } from "@/src/types/GridTypes";
+import type { ColumnTypes, ContainerTypes } from "@/src/types/GridTypes";
 import styles from "./styles.module.scss";
 
-export function Container({ children }: any) {
-    return <div className={styles.gridContainer}>{children}</div>
+export function Container({ children, customStyles }: ContainerTypes) {
+    const containerClasses = [styles.gridContainer, customStyles].join(' ');
+    return <div className={containerClasses}>{children}</div>
 }
 
 export function Row({ children }: any) {
@@ -11,16 +12,18 @@ export function Row({ children }: any) {
 
 export function Column({ 
     desktop = 12, 
-    medium = 12, 
-    tablet = 8, 
+    medium = 8, 
+    tablet = 6, 
     phone = 4, 
-    children 
+    children,
+    customStyles
 }: ColumnTypes) {
     const spanClasses = [
         desktop ? styles[`span-lg-${desktop}`] : '',
         medium ? styles[`span-md-${medium}`] : '',
         tablet ? styles[`span-sm-${tablet}`] : '',
         phone ? styles[`span-xs-${phone}`] : '',
+        customStyles
     ]
     .filter(Boolean)
     .join(' ');

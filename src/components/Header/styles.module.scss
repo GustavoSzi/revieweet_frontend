@@ -11,5 +11,12 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    grid-column: 12/12;
 }

@@ -1,6 +1,6 @@
 $columns-lg: 12;
-$columns-md: 12;
-$columns-sm: 8;
+$columns-md: 8;
+$columns-sm: 6;
 $columns-xs: 4;
 
 .gridContainer {
@@ -30,36 +30,32 @@ $columns-xs: 4;
     margin-bottom: 24px;
 }
 
-.column {
-    grid-column: span 12;
+@for $i from 1 through $columns-lg {
+  .span-lg-#{$i} {
+      grid-column: span #{$i};
+  }
+}
 
-    @for $i from 1 through $columns-lg {
-        .span-lg-#{$i} {
-            grid-column: span #{$i};
-        }
+@for $i from 1 through $columns-md {
+  @media (max-width: 1200px) {
+    .span-md-#{$i} {
+      grid-column: span #{$i};
     }
-  
-    @for $i from 1 through $columns-md {
-        @media (max-width: 1200px) {
-          .span-md-#{$i} {
-            grid-column: span #{$i};
-          }
-        }
+  }
+}
+
+@for $i from 1 through $columns-sm {
+  @media (max-width: 768px) {
+    .span-sm-#{$i} {
+      grid-column: span #{$i};
     }
-  
-    @for $i from 1 through $columns-sm {
-        @media (max-width: 768px) {
-          .span-sm-#{$i} {
-            grid-column: span #{$i};
-          }
-        }
+  }
+}
+
+@for $i from 1 through $columns-xs {
+  @media (max-width: 576px) {
+    .span-xs-#{$i} {
+      grid-column: span #{$i};
     }
-  
-    @for $i from 1 through $columns-xs {
-        @media (max-width: 576px) {
-          .span-xs-#{$i} {
-            grid-column: span #{$i};
-          }
-        }
-    }
+  }
 }
