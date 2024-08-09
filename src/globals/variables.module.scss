@@ -1,0 +1,9 @@
+$body-color: #F2F2F2;
+$primary-color: #8400b7;
+$primary-color-darker: #6D00BC;
+ 
+:export {
+  primaryColor: $primary-color;
+  primaryDarker: $primary-color-darker;
+  bodyColor: $body-color;
+}

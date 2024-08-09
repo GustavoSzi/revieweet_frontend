@@ -1,0 +1,34 @@
+@import "../../../globals/variables.module.scss";
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    height: 72px;
+}
+
+.input {
+    width: 784px;
+    height: 100%;
+    background-color: #DDDDDD;
+    border: 1px solid #62626288;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    padding-left: 16px;
+    font-size: 24px;
+}
+
+.buttonContainer {
+    width: 96px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+        background-color: $primary-color-darker;
+    }
+}

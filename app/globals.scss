@@ -1,3 +1,6 @@
+@import "../src/globals/variables.module.scss";
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +8,10 @@
 }
 
 body {
-    max-width: 1440px;
-    margin: 0 auto;
+    background-color: $body-color;
 }
+
+main {
+    padding-top: 32px;
+}
+
