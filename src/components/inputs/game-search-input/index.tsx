@@ -2,7 +2,6 @@
 
 import { ChangeEvent, useEffect, useState } from "react"
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import variables from "@src/globals/variables.module.scss";
 
 import styles from "./styles.module.scss";
 
