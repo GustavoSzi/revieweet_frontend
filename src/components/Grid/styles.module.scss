@@ -4,10 +4,6 @@ $columns-sm: 6;
 $columns-xs: 4;
 
 .gridContainer {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 16px;
-    padding: 0 56px;
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
@@ -28,8 +24,18 @@ $columns-xs: 4;
 }
 
 .row {
-    display: contents;
-    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    padding: 0 56px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (max-width: 576px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @for $i from 1 through $columns-lg {

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import "./globals.scss";
 import { Header } from "@/src/components/header";
 import { ApolloWrapper } from "@/src/lib/apollo-provider";
 
 const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ 
+  subsets: ["latin"],
+  weight: ["400", "700"]
+});
 
 export const metadata: Metadata = {
   title: "Revieweet!",
@@ -18,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <ApolloWrapper>
           <Header />
           {children}

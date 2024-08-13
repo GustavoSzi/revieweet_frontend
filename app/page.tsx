@@ -13,11 +13,13 @@ export default async function Home() {
   return (
     <main>
       <Container>
-        <Column>
-          <div className={styles.inputContainer}>
-            <GameSearchInput />
-          </div>
-        </Column>
+        <Row>
+          <Column>
+            <div className={styles.inputContainer}>
+              <GameSearchInput />
+            </div>
+          </Column>
+        </Row>
       </Container>
     </main>
   );

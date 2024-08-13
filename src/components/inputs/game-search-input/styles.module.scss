@@ -1,5 +1,15 @@
 @import "../../../globals/variables.module.scss";
 
+$inputWidth: 784px;
+$buttonWidth: 96px;
+
+.searchSectionContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .inputContainer {
     display: flex;
     align-items: center;
@@ -7,7 +17,7 @@
 }
 
 .input {
-    width: 784px;
+    width: $inputWidth;
     height: 100%;
     background-color: #DDDDDD;
     border: 1px solid #62626288;
@@ -18,7 +28,7 @@
 }
 
 .buttonContainer {
-    width: 96px;
+    width: $buttonWidth;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -30,5 +40,45 @@
 
     &:hover {
         background-color: $primary-color-darker;
+    }
+}
+
+.resultsContainer {
+    width: $inputWidth + $buttonWidth;
+    // background-color: #FFF;
+    min-height: 72px;
+    // box-shadow: 0px 1px 4px 1px #757575b6;
+    
+    .loaderContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #loading {
+        height: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    // & > div:last-child, & > div:last-child img {
+    //     border-radius: 0 0 5px 5px;
+    // }
+}
+
+.moreResults {
+    background-color: #FFF;
+    height: 72px;
+    width: 100%;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: #5C5C5C;
     }
 }
