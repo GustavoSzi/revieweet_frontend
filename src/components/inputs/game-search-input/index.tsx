@@ -10,13 +10,16 @@ import { SmallLoader } from "../../small-loader";
 import type { SearchGame } from "@/src/types/GameTypes";
 import { SearchGameResult } from "../../search-game-result";
 import { FindGames } from "@/src/types/graphql/Game";
+import { useRouter } from "next/navigation";
 
 export function GameSearchInput() {
-    const [searchValue, setSearchValue] = useState("");
-    const [shouldShowResults, setShouldShowResults] = useState(false);
+    const router = useRouter();
     const [findGamesByTitle, { loading, error, data }] = useLazyQuery<FindGames>(
         FIND_GAMES_BY_TITLE_AND_PAGE
     );
+
+    const [searchValue, setSearchValue] = useState("");
+    const [shouldShowResults, setShouldShowResults] = useState(false);
 
     const inputRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
@@ -34,6 +37,11 @@ export function GameSearchInput() {
             }
         });
         setShouldShowResults(true);
+    }
+
+    function handleSubmit() {
+        if(!searchValue) return;
+        router.push(`/search-results?game-title=${searchValue}`);
     }
 
     useEffect(() => {
@@ -74,8 +82,8 @@ export function GameSearchInput() {
                     placeholder="Search for a game..."
                     className={styles.input}
                 />
-                <div className={styles.buttonContainer} onClick={() => console.log("click")}>
-                <FaMagnifyingGlass color='#FFF' size={24} />
+                <div className={styles.buttonContainer} onClick={handleSubmit}>
+                    <FaMagnifyingGlass color='#FFF' size={24} />
                 </div>
             </div>
             {((loading || data) && shouldShowResults) && (

@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body suppressHydrationWarning={true} className={roboto.className}>
         <ApolloWrapper>
           <Header />
           {children}

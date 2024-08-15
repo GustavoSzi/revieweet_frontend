@@ -8,7 +8,7 @@ interface SearchGameResultProps {
     game: SearchGame
 }
 
-const imgUrl = process.env.NEXT_PUBLIC_IGDB_IMAGE_URL + "/t_thumb_2x/";
+const imgUrl = process.env.NEXT_PUBLIC_IGDB_THUMB_2X;
 
 export function SearchGameResult({ game }: SearchGameResultProps) {
 

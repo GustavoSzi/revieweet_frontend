@@ -1,18 +1,13 @@
 import { gql } from "@apollo/client";
 
-export const FIND_GAMES = gql`
-    query FindGames {
-        findGames {
+export const SEARCH_GAMES = gql`
+    query SearchGames($title: String, $page: Int, $linesPerPage: Int) {
+        searchGames(title: $title, page: $page, linesPerPage: $linesPerPage) {
             content {
                 title
                 id
+                cover_image
             }
-            number
-            size
-            totalElements
-            totalPages
-            isFirst
-            isLast
         }
     }
 `
