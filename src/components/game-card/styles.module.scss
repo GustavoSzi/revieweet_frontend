@@ -1,0 +1,26 @@
+$imageWidth: 207px;
+$imageHeight: 269px;
+
+$cardHeight: 392px;
+
+.gameCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: $cardHeight;
+    margin-bottom: 32px;
+}
+
+.imageContainer {
+    width: 207px;
+    height: 296px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img {
+        border-radius: 2px;
+    }
+}
+

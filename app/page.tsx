@@ -14,6 +14,9 @@ export default async function Home() {
               <GameSearchInput />
           </Column>
         </Row>
+        <Row>
+          <p>Text</p>
+        </Row>
       </Container>
     </main>
   );
