@@ -94,7 +94,7 @@ export function GameSearchInput() {
                         </div>)}
 
                     {data?.findGames?.content?.map((game: SearchGame) => {
-                        return <SearchGameResult game={game} />
+                        return <SearchGameResult key={game.id} game={game} />
                     })}
                     <div className={styles.moreResults}>
                         <p>To see {data?.findGames?.content.length === 0 ? "" : "more"} games, click on the Search button</p>

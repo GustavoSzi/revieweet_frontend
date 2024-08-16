@@ -2,7 +2,7 @@ import { SearchGame } from "@/src/types/GameTypes";
 import Image from "next/image";
 
 import styles from './styles.module.scss';
-import { SmallButton } from "../buttons";
+import { Button, SmallButton } from "../buttons";
 import { useRouter } from "next/navigation";
 
 interface GameCardProps {
@@ -33,7 +33,13 @@ export default function GameCard({ game }: GameCardProps) {
                 }
             </section>
             <p>{game.title}</p>
-            <SmallButton onClick={handleNavigation}>View Details {">"}</SmallButton>
+            <Button 
+                btnSize="small" 
+                btnType="primary" 
+                onClick={handleNavigation}
+            >
+                View Details {">"}
+            </Button>
         </div>
     )
 }

@@ -1,0 +1,55 @@
+@import "../../../src/globals/variables.module.scss";
+
+.gameDetailsContainer {
+    padding-top: 32px;
+
+    & h1 {
+        font-size: 42px;
+        font-weight: 600;
+        color: $title-color;
+    }
+
+    .release_date {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    & .description {
+        line-height: 24px;
+        margin-top: 24px;
+    }
+}
+
+.detailsSection {
+    height: 576px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cover {
+    border-radius: 4px;
+    box-shadow: 0px 0px 16px -8px #000;
+}
+
+.textSection {
+    padding-right: 24px;
+}
+
+.btnSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewsSection {
+    margin-top: 126px;
+
+    h1 {
+        color: #000;
+        font-weight: 500;
+        margin-bottom: 42px;
+    }
+
+    padding-bottom: 32px;
+}

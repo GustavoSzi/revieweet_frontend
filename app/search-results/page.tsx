@@ -68,7 +68,7 @@ export default function GameSearchResults() {
                 <Row>
                     {data?.searchGames?.content.map((game) => {
                         return (
-                            <Column desktop={2}>
+                            <Column key={game.id} desktop={2}>
                                 <GameCard game={game} />
                             </Column>
                         )

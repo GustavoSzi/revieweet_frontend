@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
 import "./globals.scss";
 import { Header } from "@/src/components/header";
 import { ApolloWrapper } from "@/src/lib/apollo-provider";
-
-const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ 
-  subsets: ["latin"],
-  weight: ["400", "700"]
-});
+import { roboto } from "@/fonts";
 
 export const metadata: Metadata = {
   title: "Revieweet!",

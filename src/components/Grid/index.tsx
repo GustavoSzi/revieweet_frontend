@@ -1,4 +1,4 @@
-import type { ColumnTypes, ContainerTypes } from "@/src/types/GridTypes";
+import type { ColumnTypes, ContainerTypes, RowTypes } from "@/src/types/GridTypes";
 import styles from "./styles.module.scss";
 
 export function Container({ children, customStyles }: ContainerTypes) {
@@ -6,8 +6,9 @@ export function Container({ children, customStyles }: ContainerTypes) {
     return <div className={containerClasses}>{children}</div>
 }
 
-export function Row({ children }: any) {
-    return <div className={styles.row}>{children}</div>
+export function Row({ children, customStyles }: RowTypes) {
+    const containerClasses = [styles.row, customStyles].join(' ');
+    return <div className={containerClasses}>{children}</div>
 }
 
 export function Column({ 

@@ -2,12 +2,26 @@ import { ButtonHTMLAttributes } from "react";
 import styles from "./styles.module.scss";
 
 type ButtonTypes = ButtonHTMLAttributes<HTMLButtonElement> & {
-
+    btnType?: "igdb" | "primary"
+    btnSize?: "small" | "large" | "tall"
+    customStyles?: string
 }
 
-export function BaseButton({children, ...props}: ButtonTypes) {
+export function Button({
+    children, 
+    btnType = "primary", 
+    btnSize = "large",
+    customStyles = "" ,
+    ...props
+}: ButtonTypes) {
+    const classNames = `
+        ${styles.baseButton} 
+        ${styles[btnType]} 
+        ${styles[btnSize]} 
+        ${customStyles}
+    `
     return (
-        <button className={styles.baseButton} {...props}>
+        <button className={classNames} {...props}>
             {children}
         </button>
     )
@@ -16,8 +30,16 @@ export function BaseButton({children, ...props}: ButtonTypes) {
 
 export function SmallButton({children, ...props}: ButtonTypes) {
     return (
-        <BaseButton className={styles.smallButton} {...props}>
+        <Button className={styles.smallButton} {...props}>
             {children}
-        </BaseButton>
+        </Button>
+    )
+}
+
+export function LargeButton({children, ...props}: ButtonTypes) {
+    return (
+        <Button className={styles.smallButton} {...props}>
+            {children}
+        </Button>
     )
 }

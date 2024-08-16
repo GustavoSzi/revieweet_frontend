@@ -10,7 +10,6 @@
     border-radius: 5px;
 
     cursor: pointer;
-    background-color: $primary-color;
     color: #fff;
     transition: all .2s;
 
@@ -22,10 +21,25 @@
     &:hover{
         filter: brightness(0.7);
     }
+
+    &.primary { background-color: $primary-color; }
+
+    &.igdb { background-color: #0B0013; color: #fff; }
+
+    &.small {
+        width: 164px;
+        height: 36px;
+    }
+
+    &.large {
+        width: 384px;
+        width: 56px;
+    }
+
+    &.tall {
+        width: 304px;
+        height: 72px;
+        font-size: 20px;
+    }
 }
 
-.smallButton {
-    @extend .baseButton;
-    width: 164px;
-    height: 38px;
-}

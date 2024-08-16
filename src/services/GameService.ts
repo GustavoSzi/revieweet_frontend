@@ -29,3 +29,18 @@ export const FIND_GAMES_BY_TITLE_AND_PAGE = gql`
         }
     }
 `
+
+export const FIND_GAME_BY_ID = gql`
+    query FindGameById($gameId: ID) {
+        findGameById(id: $gameId) {
+            title
+            id
+            cover_image
+            description
+            platforms { id, name }
+            igdbId
+            igdbUrl
+            release_date
+        }
+    }
+`
