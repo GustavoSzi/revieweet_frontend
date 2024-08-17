@@ -1,0 +1,27 @@
+.formContainer {
+    width: 70%;
+    margin-top: 32px;
+
+    & .submitBtn {
+        height: 56px !important;
+        width: 208px !important;
+        font-weight: 500;
+        font-size: 16px;
+        margin: 16px auto 32px;
+    }
+
+    .changeType {
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.doubleColumnSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
