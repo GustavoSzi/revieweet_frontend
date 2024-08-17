@@ -1,21 +1,36 @@
 "use client"
 
 import { useForm } from "react-hook-form";
-import styles from "./styles.module.scss";
 import { TextInput } from "../../inputs/text-input";
-import { Row } from "../../grid";
 import { AuthFormTypes, SubFormSectionProps } from "@/src/types/FormTypes";
 import { poppins, roboto } from "@/fonts";
 import { Button } from "../../buttons";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
+import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function AuthForm() {
     const { register, handleSubmit, formState: { errors } } = useForm<AuthFormTypes>();
+    const router = useRouter();
 
     const [isLogin, setIsLogin] = useState(true);
 
-    function submit(data: any) {
-        console.log(data);
+    async function submit(data: any) {
+        if(isLogin) {
+            const result = await signIn("credentials", {
+                redirect: false,
+                username: data.email,
+                password: data.password
+            });
+
+            if (result?.ok) {
+                router.push("/") // Redirect to home page or dashboard
+            } else {
+                console.error(result?.error);
+                // Handle sign-in error
+            }
+        }
     }
 
     return (
