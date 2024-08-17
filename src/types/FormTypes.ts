@@ -1,4 +1,4 @@
-import { UseFormRegister } from "react-hook-form"
+import { FieldErrors, UseFormRegister } from "react-hook-form"
 
 export type LoginForm = {
     email: string,
@@ -17,5 +17,6 @@ export type RegisterForm = {
 export type AuthFormTypes = LoginForm | RegisterForm
 
 export type SubFormSectionProps = {
-    register: UseFormRegister<AuthFormTypes>
+    register: UseFormRegister<AuthFormTypes>,
+    errors?: FieldErrors
 }

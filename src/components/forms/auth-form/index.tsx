@@ -10,7 +10,7 @@ import { Button } from "../../buttons";
 import { useState } from "react";
 
 export default function AuthForm() {
-    const { register, handleSubmit } = useForm<AuthFormTypes>();
+    const { register, handleSubmit, formState: { errors } } = useForm<AuthFormTypes>();
 
     const [isLogin, setIsLogin] = useState(true);
 
@@ -22,8 +22,8 @@ export default function AuthForm() {
         <div className={styles.formContainer}>
             <form onSubmit={handleSubmit(submit)} className={poppins.className}>
                 {isLogin ?
-                    <LoginForm register={register} /> :
-                    <RegisterForm register={register} />
+                    <LoginForm register={register} errors={errors} /> :
+                    <RegisterForm register={register} errors={errors} />
                 }
                 <Button btnSize="large" customStyles={`${styles.submitBtn} ${roboto.className}`}>
                     {isLogin ? "Log-in" : "Create account"}
@@ -36,7 +36,7 @@ export default function AuthForm() {
     )
 }
 
-function LoginForm({ register }: SubFormSectionProps) {
+function LoginForm({ register, errors }: SubFormSectionProps) {
     return (
         <>
             <TextInput 
@@ -46,6 +46,7 @@ function LoginForm({ register }: SubFormSectionProps) {
                 isRequired
                 placeholder="example@gmail.com"
                 type="email"
+                errors={errors}
             />
             <TextInput 
                 register={register}
@@ -54,12 +55,13 @@ function LoginForm({ register }: SubFormSectionProps) {
                 isRequired
                 placeholder="**************"
                 type={"password"}
+                errors={errors}
             />
         </>
     )
 }
 
-function RegisterForm({ register }: SubFormSectionProps) {
+function RegisterForm({ register, errors }: SubFormSectionProps) {
     return (
         <>
             <div className={styles.doubleColumnSection}>
@@ -69,6 +71,7 @@ function RegisterForm({ register }: SubFormSectionProps) {
                     label="First name *"
                     isRequired
                     placeholder="Name"
+                    errors={errors}
                 />
                 <TextInput 
                     register={register}
@@ -84,6 +87,7 @@ function RegisterForm({ register }: SubFormSectionProps) {
                 label="Username*"
                 isRequired
                 placeholder="Username"
+                errors={errors}
             />
             <TextInput 
                 register={register}
@@ -91,6 +95,7 @@ function RegisterForm({ register }: SubFormSectionProps) {
                 label="Email*"
                 isRequired
                 placeholder="example@gmail.com"
+                errors={errors}
             />
             <div className={styles.doubleColumnSection}>
                 <TextInput 
@@ -99,6 +104,7 @@ function RegisterForm({ register }: SubFormSectionProps) {
                     label="Password*"
                     isRequired
                     placeholder="***********"
+                    errors={errors}
                 />
                 <TextInput 
                     register={register}
@@ -106,6 +112,7 @@ function RegisterForm({ register }: SubFormSectionProps) {
                     label="Confirm password *"
                     isRequired
                     placeholder="***********"
+                    errors={errors}
                 />
             </div>
         </>

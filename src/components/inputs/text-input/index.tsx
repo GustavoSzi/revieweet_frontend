@@ -1,8 +1,8 @@
 
-import { UseFormRegister } from "react-hook-form";
-import styles from "./styles.module.scss";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { poppins } from "@/fonts";
 import { InputHTMLAttributes } from "react";
+import styles from "./styles.module.scss";
 
 type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
     register: UseFormRegister<any>,
@@ -10,9 +10,10 @@ type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
     placeholder: string,
     label: string,
     isRequired?: boolean,
+    errors?: FieldErrors
 }
 
-export function TextInput({ label, placeholder, type = "text", register, isRequired, name }: TextInputProps) {
+export function TextInput({ label, placeholder, type = "text", register, isRequired, name, errors }: TextInputProps) {
     return (
         <label className={styles.label}>
             {label}
@@ -23,6 +24,7 @@ export function TextInput({ label, placeholder, type = "text", register, isRequi
                     required: isRequired ? "Required field" : undefined
                 })}
             />
+            {!!errors && <p className={styles.error}>{errors[name]?.message?.toString()}</p>}
         </label>
     )
 }
