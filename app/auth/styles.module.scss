@@ -1,0 +1,9 @@
+@import "../../src/globals/variables.module.scss";
+
+.authCard {
+    width: 100%;
+    height: calc(100vh - $header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
