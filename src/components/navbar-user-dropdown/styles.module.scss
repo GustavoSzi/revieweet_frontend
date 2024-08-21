@@ -1,20 +1,5 @@
 @import "../../globals/variables.module.scss";
 
-.userContainer {
+.icon {
     cursor: pointer;
-    position: relative;
-}
-
-.dropdownContainer {
-    position: absolute;
-    background-color: white;
-    width: 172px;
-    height: 128px;
-    top: $header-height;
-    padding-left: 16px;
-    list-style-type: none;
-
-    li {
-        margin-top: 16px;
-    }
 }

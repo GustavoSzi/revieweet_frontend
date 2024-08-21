@@ -1,0 +1,20 @@
+.dropdownContent {
+    z-index: 10000;
+    background-color: #FFF;
+    padding: 24px 32px;
+    margin-top: 24px;
+    box-shadow: 4px 6px 12px -8px rgba(0,0,0,0.63);
+    -webkit-box-shadow: 4px 6px 12px -8px rgba(0,0,0,0.63);
+    -moz-box-shadow: 4px 6px 12px -8px rgba(0,0,0,0.63);
+}
+
+.dropdownMenuItem {
+    cursor: pointer;
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

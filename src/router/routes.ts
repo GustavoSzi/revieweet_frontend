@@ -3,7 +3,8 @@ export const UnauthenticatedRoutes = [
 ]
 
 export const AuthenticatedRoutes = [
-    "/review-form/:id"
+    "/review-form/:id",
+    "/profile"
 ]
 
 export const AdminRoutes = []
