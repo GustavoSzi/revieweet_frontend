@@ -13,18 +13,32 @@ type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
     errors?: FieldErrors
 }
 
-export function TextInput({ label, placeholder, type = "text", register, isRequired, name, errors }: TextInputProps) {
+export function TextInput({ label, placeholder, type = "text", register, isRequired, name, errors, id, ...props }: TextInputProps) {
+    return (
+        <label htmlFor={name} className={styles.label}>
+            {label}
+            <input className={`${styles.input} ${poppins.className}`}
+                type={type}
+                placeholder={placeholder}
+                id={name}
+                {...props}
+                {...register(name, {
+                    required: isRequired ? "Required field" : undefined
+                })}
+            />
+            {!!errors && <p className={styles.error}>{errors[name]?.message?.toString()}</p>}
+        </label>
+    )
+}
+
+export function TextInput2({ label, placeholder, type = "text", register, isRequired, name, errors }: TextInputProps) {
     return (
         <label className={styles.label}>
             {label}
             <input className={`${styles.input} ${poppins.className}`}
                 type={type}
                 placeholder={placeholder}
-                {...register(name, {
-                    required: isRequired ? "Required field" : undefined
-                })}
             />
-            {!!errors && <p className={styles.error}>{errors[name]?.message?.toString()}</p>}
         </label>
     )
 }

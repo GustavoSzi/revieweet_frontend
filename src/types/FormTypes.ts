@@ -17,6 +17,6 @@ export type RegisterForm = {
 export type AuthFormTypes = LoginForm | RegisterForm
 
 export type SubFormSectionProps = {
-    register: UseFormRegister<AuthFormTypes>,
+    register: UseFormRegister<any>,
     errors?: FieldErrors
 }

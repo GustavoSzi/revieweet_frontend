@@ -4,9 +4,11 @@ import LogoImg from "@/public/assets/logo.png";
 
 import styles from "./styles.module.scss";
 import { Column, Container, Row } from "../grid";
-import { FaRegUserCircle } from "react-icons/fa";
+import NavbarUserDropdown from "../navbar-user-dropdown";
 
-export function Header() {
+
+export async function Header() {
+
     return (
         <header className={styles.headerContainer}>
             <Container>
@@ -17,7 +19,7 @@ export function Header() {
                         </Link>
                     </Column>
                     <nav className={styles.nav}>
-                        <FaRegUserCircle size={24} />
+                        <NavbarUserDropdown />
                     </nav>
                 </Row>
             </Container>
