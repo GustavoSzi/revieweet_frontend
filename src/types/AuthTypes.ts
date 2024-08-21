@@ -1,6 +1,6 @@
 export type User = {
     id: any;
-    token: string;
+    token?: string;
     role: string;
     name: string;
     email: string;

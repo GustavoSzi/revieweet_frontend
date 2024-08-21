@@ -5,9 +5,13 @@ import LogoImg from "@/public/assets/logo.png";
 import styles from "./styles.module.scss";
 import { Column, Container, Row } from "../grid";
 import NavbarUserDropdown from "../navbar-user-dropdown";
+import { auth } from "@/src/lib/NextAuth/auth";
+import { User } from "@/src/types/AuthTypes";
 
 
 export async function Header() {
+
+    const session = await auth();
 
     return (
         <header className={styles.headerContainer}>
@@ -19,7 +23,7 @@ export async function Header() {
                         </Link>
                     </Column>
                     <nav className={styles.nav}>
-                        <NavbarUserDropdown />
+                        <NavbarUserDropdown user={session?.user as User} />
                     </nav>
                 </Row>
             </Container>

@@ -1,17 +1,27 @@
 "use client"
+
 import { User } from "@/src/types/AuthTypes";
-import { signOut } from "next-auth/react";
 import { FaRegUserCircle } from "react-icons/fa";
+import styles from "./styles.module.scss";
+import { useState } from "react";
+import { logout } from "@/src/actions/login";
 
 export default function NavbarUserDropdown({ user }: { user?: User}) {
-
-    console.log(user);
+    const [isActive, setIsActive] = useState(false);
 
     return (
         <div>
-            <FaRegUserCircle size={24} />
-            <p>{user?.name}</p>
-            <p onClick={async () => { await signOut() }}>Sair</p>
+            <div className={styles.userContainer} onClick={() => setIsActive(value => !value)}>
+                <FaRegUserCircle size={24} />
+            </div>
+            {isActive && (
+                <ul className={styles.dropdownContainer}>
+                    <li><p>{user?.name}</p></li>
+                    <li>
+                        <button type="button" onClick={async () => await logout()}>Sair</button>
+                    </li>
+                </ul>
+            )}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 "use server"
 
-import { signIn } from "../lib/NextAuth/auth"
+import { signIn, signOut } from "../lib/NextAuth/auth"
 
 export async function parseClientLogin(data: any) {
     const response = await signIn("credentials", { username: data.email, password: data.password, redirectTo: "/" });
@@ -36,4 +36,8 @@ export async function getAuth({ username, password }: any) {
 
     const json = await response.json();
     return json;
+}
+
+export async function logout() {
+    await signOut();
 }
