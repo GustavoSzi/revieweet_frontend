@@ -1,11 +1,16 @@
 "use server"
 
 import { signIn, signOut } from "../lib/NextAuth/auth"
+import { AuthFormFields } from "../types/FormTypes";
 
-export async function parseClientLogin(data: any) {
+export async function parseClientLogin(data: AuthFormFields) {
     const response = await signIn("credentials", { username: data.email, password: data.password, redirectTo: "/" });
 
     return response;
+}
+
+export async function parseClientRegister(data: AuthFormFields) {
+    
 }
 
 export async function getAuth({ username, password }: any) {

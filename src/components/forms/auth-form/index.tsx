@@ -7,27 +7,48 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { SubFormSectionProps } from "@/src/types/FormTypes";
-import { parseClientLogin } from "@/src/actions/login";
+import type { AuthFormFields, SubFormSectionProps } from "@/src/types/FormTypes";
+import { parseClientLogin, parseClientRegister } from "@/src/actions/login";
 
 export default function AuthForm() {
     const router = useRouter();
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, clearErrors, setError, formState: { errors }, handleSubmit } = useForm<AuthFormFields>();
 
     const [isLogin, setIsLogin] = useState(true);
 
-    async function submit(data: any) {
-        await parseClientLogin(data);
+    async function submit(data: AuthFormFields) {
+        try {
+            if(isLogin) {
+                await parseClientLogin(data);
+                return;
+            }
+
+            // TODO: Implement email confirmation
+            if(data.password !== data.confirmPassword) {
+                setError("password", { message: "Password fields are not equal" });
+                return;
+            }
+
+            await parseClientRegister(data);
+        } catch(e) {}
+            
+    }
+
+    function toggleMode() {
+        setIsLogin(value => !value);
+        clearErrors();
     }
 
     return (
         <div className={styles.formContainer}>
             <form onSubmit={handleSubmit(submit)} className={poppins.className}>
-                <LoginForm register={register} errors={errors} />
+                {isLogin ? 
+                    <LoginForm register={register} errors={errors} /> :
+                    <RegisterForm register={register} errors={errors} />}
                 <Button btnSize="large" customStyles={`${styles.submitBtn} ${roboto.className}`}>
                     {isLogin ? "Log-in" : "Create account"}
                 </Button>
-                <p className={styles.changeType} onClick={() => setIsLogin(value => !value)}>{isLogin ? 
+                <p className={styles.changeType} onClick={toggleMode}>{isLogin ? 
                     "Doesn't have an account yet? Register now!" : 
                     "Already have an account? Log in!"}</p>
             </form>
@@ -52,7 +73,7 @@ function LoginForm({ register, errors }: SubFormSectionProps) {
                 label="Password"
                 isRequired
                 placeholder="**************"
-                type={"password"}
+                type="password"
                 register={register}
                 errors={errors}
             />
@@ -103,6 +124,7 @@ function RegisterForm({ register, errors }: SubFormSectionProps) {
                     label="Password*"
                     isRequired
                     placeholder="***********"
+                    type="password"
                     register={register}
                     errors={errors}
                 />
@@ -111,6 +133,7 @@ function RegisterForm({ register, errors }: SubFormSectionProps) {
                     label="Confirm password *"
                     isRequired
                     placeholder="***********"
+                    type="password"
                     register={register}
                     errors={errors}
                 />

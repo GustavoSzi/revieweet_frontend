@@ -13,3 +13,13 @@ export const LOG_IN = gql`
         }
     }
 `
+
+export const FROM_TOKEN = gql`
+    query FindProfileByToken {
+        findProfileByToken {
+            username
+            firstName
+            lastName
+        }
+    }
+`

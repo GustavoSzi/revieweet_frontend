@@ -5,6 +5,15 @@ export type LoginForm = {
     password: string
 }
 
+export type AuthFormFields = {
+    firstName?: string,
+    lastName?: string,
+    username?: string,
+    email: string,
+    password: string,
+    confirmPassword?: string,
+}
+
 export type RegisterForm = {
     firstName: string,
     lastName?: string,
