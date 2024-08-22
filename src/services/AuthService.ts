@@ -20,6 +20,7 @@ export const FROM_TOKEN = gql`
             username
             firstName
             lastName
+            register_date
         }
     }
 `
